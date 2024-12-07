@@ -910,7 +910,9 @@ def export_excel(n_clicks, stored_data, initial_headcount):
         import traceback
         traceback.print_exc()
         return None
-
-# Run the application
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8094)
+    # Get port from environment variable or use 8000 as default
+    port = int(os.getenv("PORT", 8000))
+    app.run_server(host='0.0.0.0', port=port, debug=False)
+
+server = app.server  # This is needed for Koyeb
